@@ -1,0 +1,134 @@
+安装ifconfig软件
+yum -y install net-tools
+
+修改docker0默认IP
+systemctl stop docker
+vim/etc/docker/daemon.json
+{"bip":"192.168.1.1/24"}
+systemctl start docker
+ifconfig
+安装docker 
+启动服务 systemctl start docker
+ifconfig
+版本验证docker version
+列出容器镜像
+docker images
+搜索镜像
+docker search nginx
+下载镜像
+docker pull nginx
+打包镜像是个tar包 
+docker save nginx:latest >nginx
+导入镜像
+docker load <xx.tar
+docker images 
+运行docker 
+docker run -it 镜像名:标签 容器内的命令
+	    i 交互
+	    t 终端
+主机名，网络，用户，进程，根目录，信号向量
+
+运行容器默认命令
+docker run -it centos:latest
+查看容器
+docker ps
+查看的容器
+docker ps -a
+查看容器
+docker ps -q
+docker ps -aq
+查了镜像的制作
+docker history 镜像名称:l
+docker history conetos:latest
+
+查看镜像底层信息
+docker inspect 镜像名称
+docker inspect centos:latest
+
+删除本地镜像
+docker rmi -f  httpd:latest
+
+修改镜像名
+docker tag  http:loatest  oo:xx
+
+关闭镜像
+docker stop
+
+启动镜像
+docker start
+
+启动nginx
+docker run -itd nginx 
+docker run -it ngin:latest /bin/bash
+ 
+重启镜像
+docker restart 
+
+进入上帝镜像
+docker attach
+
+
+停止容器
+docker ps  -a
+docker stop  fd00b1bcdae3
+
+删除容器
+docker rm
+
+删除容器必须要停止
+
+查看容器启动
+cat /usr/lib/systemd/system/hybrid-sleep.target
+
+
+启动nginx
+docker run -itd nginx
+docker exec -it 9 /bin/bash
+
+查看系统
+cat /etc/debian_version
+dpkg -l 查看软件包
+再查看他的安装路径
+dpkg -L nginx
+也可以nginx -T -h
+
+容器镜像制作
+先做一个镜像里边安装YUM源和软件包
+net-tools psmisc lftp iproute vim
+docker commit 你镜像ID cc:latest
+docker commit 479cc91cf37c cc:latest
+验证
+docker images
+
+ssh
+设置查看ssh
+yum provides sshd  
+yum -y install openssh-server
+查看启动向
+cat /usr/lib/systemd/system/sshd.service
+/usr/sbin/sshd -D $OPTIONS
+启动失败设置k
+sshd-keygen
+查询软件包
+yum provides */init.d/functions
+进行安装
+yum -y install initscripts
+在执行
+sshd-keygen
+/usr/sbin/sshd -D &
+ss -luntp | grep 22
+设置密码
+echo '123456' |passwd --stdin root
+
+启动httpd
+/usr/sbin/httpd
+/usr/sbin/httpd && /usr/sbin/sshd -D &
+
+批量删除容器
+docker rm $(docker ps -aq)
+
+nmap扫描
+nmap -n -sP 192.168.1.0/24   扫描一个网段ping
+
+端口扫描
+nmap -p 21-22 192.168.4.0/24
