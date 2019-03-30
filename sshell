@@ -1,0 +1,9 @@
+#!/bin/bash
+##sshd
+yum -y install openssh-server
+yum -y install initscripts
+sshd-keygen
+/usr/sbin/sshd -D &
+#scp
+openssh-clients-7.4p1-16.el7.x86_64
+echo "123456" | passwd --stdin root
