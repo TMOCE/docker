@@ -124,6 +124,10 @@ echo '123456' |passwd --stdin root
 /usr/sbin/httpd
 /usr/sbin/httpd && /usr/sbin/sshd -D &
 
+docker 创建mysql
+docker run --name 1-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d 
+docker run --name 别名      -p 端口      -e  设置密码                  -d docker 镜像  
+
 批量删除容器
 docker rm $(docker ps -aq)
 
